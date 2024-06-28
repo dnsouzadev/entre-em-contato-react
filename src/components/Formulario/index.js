@@ -4,17 +4,24 @@ import CampoTexto from '../CampoTexto';
 import ListaSuspensa from '../ListaSuspensa';
 import './index.css';
 
-const Formulario = () => {
+const Formulario = (props) => {
 
-    const aoSalvar = (e) => {
-        e.preventDefault();
-        console.log('Formulário enviado! =>', nome, contato, email, assunto);
-    }
+    const times = []
 
     const [nome, setNome] = useState('');
     const [contato, setContato] = useState('');
     const [email, setEmail] = useState('');
     const [assunto, setAssunto] = useState('');
+
+    const aoSalvar = (e) => {
+        e.preventDefault();
+        props.aoColaboradorCadastrado({
+            nome,
+            contato,
+            email,
+            assunto
+        })
+    }
 
     return (
         <section className='formulario'>
